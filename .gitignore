@@ -1,0 +1,5 @@
+# Ignore compiled C binaries
+*.o
+*.out
+*.exe
+hello_world
