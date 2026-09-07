@@ -2,4 +2,8 @@
 *.o
 *.out
 *.exe
-hello_world
+# Ignore all extensionless files (compiled binaries)
+chapter_*/*
+!chapter_*/*.c
+!chapter_*/*.h
+
