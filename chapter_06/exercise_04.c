@@ -21,10 +21,10 @@ int main(void)
         value = number_shares * share_price;
 
         commission = (value < 2500.00f)   ? 30.00f  + .017f  * value:
-                    (value < 6250.00f)   ? 56.00f  + .0066f * value:
-                    (value < 20000.00f)  ? 76.00f  + .0034f * value:
-                    (value < 50000.00f)  ? 100.00f + .0022f * value:
-                    (value < 500000.00f) ? 155.00f + .0011f * value:
+                     (value < 6250.00f)   ? 56.00f  + .0066f * value:
+                     (value < 20000.00f)  ? 76.00f  + .0034f * value:
+                     (value < 50000.00f)  ? 100.00f + .0022f * value:
+                     (value < 500000.00f) ? 155.00f + .0011f * value:
                                             255.00f + .0009f * value;
 
         commission = (commission < 39.00f) ? 39.00f : commission;
