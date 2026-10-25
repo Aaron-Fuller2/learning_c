@@ -6,7 +6,7 @@ int main(void)
 {
     int number_entered;
 
-    while (1) {   // ⭐ keep asking until user enters <= 0
+    while (1) {   // keep asking until user enters <= 0
 
         printf("Enter a number (<= 0 to quit): ");
         scanf("%d", &number_entered);
