@@ -2,64 +2,67 @@
 
 #define SIZE 100
 
-void print_numbers(int arr[], int n);
-void selection_sort(int arr[], int n);
-
+void print_arr(int arr[], int count);
+int sort_function(int arr[], int count);
 
 int main(void)
 {
-    int numbers[SIZE];
-    int n = 0;
-    int value;
+    int arr[SIZE] = {0};
+    int ch, i;
 
-    printf("Enter numbers to sort (0 to stop): ");
+    printf("Enter array to be sorted: ");
 
-    while (n < SIZE) {
-        scanf("%d", &value);
+    for (i = 0; i < SIZE; i++)
+    {
+        scanf("%d", &arr[i]);
 
-        if (value == 0)
+        ch = getchar();
+
+        if (ch == '\n')
+        {
             break;
-
-        numbers[n] = value;
-        n++;
+        }
     }
 
-    print_numbers(numbers, n);
-    selection_sort(numbers, n);
+    printf("The sorted arr contains: \n");
+    sort_function(arr, i + 1);
+    print_arr(arr, i + 1);
 
     return 0;
 }
 
-void print_numbers(int arr[], int n)
+void print_arr(int arr[], int count)
 {
-    printf("The numbers array contains: ");
+    printf("arr contains: ");
 
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < count; i++)
+    {
         printf("%d ", arr[i]);
+    }
 
     printf("\n");
 }
 
-void selection_sort(int arr[], int n)
+int sort_function(int arr[], int count)
 {
-    int max, max_index, temp;
+    if (count <= 1)                      /* base case: nothing left to sort */
+    {
+        return 0;
+    }
 
-    if (n <= 1)
-        return;
+    int largest_position = 0;
 
-    max = arr[0];
-    max_index = 0;
-
-    for (int i = 1; i < n; i++) {
-        if (arr[i] > max) {
-            max = arr[i];
-            max_index = i;
+    for (int i = 1; i < count; i++)
+    {
+        if (arr[i] > arr[largest_position])
+        {
+            largest_position = i;
         }
     }
 
-    temp = arr[n - 1];
-    arr[n - 1] = arr[max_index];
-    arr[max_index] = temp;
+    int last_element = arr[count - 1];
+    arr[count - 1] = arr[largest_position];
+    arr[largest_position] = last_element;
 
-    selection_sort(arr, n - 1);
+    return sort_function(arr, count - 1);   /* recurse on the unsorted part */
 }
